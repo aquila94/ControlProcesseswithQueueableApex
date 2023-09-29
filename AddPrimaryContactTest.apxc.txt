@@ -1,0 +1,28 @@
+@isTest
+public class AddPrimaryContactTest 
+{
+     @isTest static void TestList()
+     {
+         List<Account> Teste = new List <Account>();
+         for(Integer i=0;i<50;i++)
+         {
+             Teste.add(new Account(BillingState = 'TX', name = 'Test'+i));
+         }
+         for(Integer j=0;j<50;j++)
+         {
+             Teste.add(new Account(BillingState = 'NY', name = 'Test'+j));
+         }
+         insert Teste;
+
+         Contact contac = new Contact();
+         contac.FirstName='demo';
+         contac.LastName ='demo';
+         insert contac;
+         String state = 'TX';
+      
+          AddPrimaryContact apc = new AddPrimaryContact(contac, state);
+          Test.startTest();
+            System.enqueueJob(apc);
+          Test.stopTest();
+      }
+ }
